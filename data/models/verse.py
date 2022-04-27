@@ -1,36 +1,23 @@
-import numpy as np
-import pandas as pd
+from dataclasses import dataclass
 
-# TODO Document types of properties
+
+@dataclass(slots=True)
 class Verse:
-    """Models a Bible verse. The verse itself is divided into the verse itself and the metadata.
-    The book, chapter and verse properties are mandatory, the other can be passed via the constructor
-    or gained via one of the interfaces
-
-    Properties:
-    ---------
-    metadata: panda.DataFrame
-        Metadata of the Bible verse
-        Properties:
-            book:
-                name of the book where the verse belongs to
-            chapter:
-                number of chapter where the verse belongs to
-            verse:
-                number of the verse
-            author:
-                author of the book where the verse belongs to
-    data: numpy.char
-        The verse itself
+    """Models a Bible verse. The verse itself is divided into the verse itself and the metadata. Because
+    the verse can be a too fine-granular unit or can be redundant with the chapter meta-data, the meta
+    data itself is optional, but if you want to load the verse the book, chapter and verse properties are
+    mandatory. To minimize data size, you can set the metaData to None after you loaded the verse itself
     """
 
-    def __init__(self, book: str, chapter: int, verse: int, author="", topics=[""]):
-        self.metaData = pd.DataFrame(
-            {
-                "book": book,
-                "chapter": chapter,
-                "verse": verse,
-                "author": author,
-            }
-        )
-        self.data = np.char
+    book: str = ""
+    """ Name of the book where the verse belongs to """
+    chapter: int = 0
+    """ Number of chapter where the verse belongs to """
+    verse: int = 0
+    """ Number of the verse itself """
+    wordCnt: int = 0
+    """ Number of verses in the chapter """
+    author: str = ""
+    """ Author of the book where the verse belongs to """
+    data: str = ""
+    """ Verse itself """
