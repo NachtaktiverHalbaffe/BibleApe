@@ -41,6 +41,7 @@ class VerseInterface(ABC):
         Returns:
             int: Number of the verse
         """
+        
         return self.verse.verse
 
     def getChapter(self) -> int:
@@ -49,6 +50,7 @@ class VerseInterface(ABC):
         Returns:
             int: Number of chapter where the verse belongs to
         """
+        
         return self.verse.chapter
 
     def getAuthor(self) -> str:
@@ -65,6 +67,7 @@ class VerseInterface(ABC):
         Returns:
             str:  Name of book where the verse belongs to
         """
+        
         return self.verse.book
 
     def getMetaData(self) -> dict:

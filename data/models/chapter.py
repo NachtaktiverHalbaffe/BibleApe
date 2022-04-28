@@ -11,16 +11,20 @@ class Chapter:
     """
 
     book: str = ""
-    """ Name of the book where the verse belongs to """
+    """Name of the book where the verse belongs to"""
     chapter: int = 0
-    """ Number of chapter where the verse belongs to """
+    """Number of chapter where the verse belongs to"""
     verseCnt: int = 0
-    """ Number of verses in the chapter """
+    """Number of verses in the chapter"""
     author: str = ""
-    """ Author of the book where the verse belongs to """
+    """Author of the book where the verse belongs to"""
     topics: list[str] = field(default_factory=list)
-    """ Core topics of the chapter """
+    """Core topics of the chapter"""
+    tags: list[str] = field(default_factory=list)
+    """Tags of the chapter. Tags are buzzwords that can categorize a chapter i.e. tags can give some further information 
+    about the chapter e.g. a tag \"Controversial\" if its controversially debated right now. To be efficiently analyzed a tag 
+    from a constant tag pool should be used"""
     figures: list[str] = field(default_factory=list)
-    """ Figures that occur in the chapter. Can be a person or a group, role tc. """
+    """Figures that occur in the chapter. Can be a person or a group, role etc"""
     data: list[Verse] = field(default_factory=list)
-    """ The chapter itself containing all verses """
+    """The chapter itself containing all verses """
